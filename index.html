@@ -4,6 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Era Kecerdasan Buatan: Pandangan Komprehensif</title>
+	
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+<!-- Konfigurasi MathJax HARUS ditulis sebelum pemanggilan library -->
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    tags: 'ams'
+  },
+  svg: {
+    fontCache: 'global',
+    scale: 1,
+    minScale: 0.5,
+    mtextInheritFont: true,
+    // TAMBAHKAN INI:
+    displayAlign: 'left',
+    innerHTML: true,
+    useFontCache: true
+  },
+  chtml: {
+    // TAMBAHKAN untuk HTML-CSS renderer
+    scale: 1,
+    minScale: 0.5,
+    matchFontHeight: true
+  },
+  options: {
+    // PASTIKAN ini ada:
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  startup: {
+    ready: () => {
+      MathJax.startup.defaultReady();
+      // Force re-typeset setelah load
+      setTimeout(() => MathJax.typesetPromise(), 100);
+    }
+  }
+};
+
+/* PERBAIKAN KHUSUS untuk simbol akar (sqrt) dan matematika inline */
+.MathJax .mjx-sqrt {
+  min-width: fit-content !important;
+  overflow: visible !important;
+}
+
+.mjx-sqrt > .mjx-box {
+  overflow: visible !important;
+  min-width: fit-content !important;
+}
+
+/* Untuk semua elemen MathJax inline */
+.mjx-container[display="false"] {
+  min-width: fit-content !important;
+  overflow: visible !important;
+}
+
+/* Pastikan tidak ada clipping */
+mjx-container {
+  overflow: visible !important;
+  clip-path: none !important;
+}
+
+/* Untuk persamaan yang mengandung sqrt panjang */
+.mjx-sqrt .mjx-root {
+  min-width: fit-content !important;
+  padding-right: 2px;
+}
+
+</script>
+
+<!-- Pemanggilan library MathJax (cukup satu kali) -->
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+	
     <style>
         * {
             box-sizing: border-box;
@@ -321,12 +399,51 @@
                 overflow-x: auto;
             }
         }
+		
+/* FIX untuk CommonHTML renderer */
+mjx-container[jax="CHTML"] {
+  overflow: visible !important;
+}
+
+/* Pastikan sqrt tidak terputus */
+mjx-sqrt {
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+mjx-sqrt > mjx-box {
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+
+/* Fix untuk simbol sqrt */
+mjx-sqrt > mjx-box > mjx-root {
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+
+/* Pastikan container cukup lebar */
+.math-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem;
+  margin: 1rem 0;
+  min-width: min-content;
+}
+
+/* Untuk inline math dengan sqrt */
+span.has-sqrt {
+  display: inline-block;
+  min-width: fit-content;
+  vertical-align: middle;
+}
+	
     </style>
 </head>
 <body>
     <header>
         <h1>Kecerdasan Buatan (AI) dan Dampaknya</h1>
-        <p class="tagline">Jelajahi perjalanan transformatif dari konsep teoretis Alan Turing hingga revolusi modern dan visi masa depan yang mengubah dunia.</p>
+        <p class="tagline">Jelajahi perjalanan transformatif dari konsep teoretis Alan Turing hingga revolusi modern <b>HCE</b> untuk menyelesaikan <b>NISQ</b> dan visi masa depan yang mengubah dunia.</p>
 		<p>
 		<b>The author</b> expresses sincere appreciation for the collaborative support and constructive discussions with <b>DeepSeek</b> and <b>ChatGPT</b>.
 		</p>
@@ -344,12 +461,14 @@
             <a href="#sejarah">⏳ Sejarah</a>
             <a href="#masa-depan-ai">🚀 Masa Depan AI</a>
             <a href="#kuantum-ai">⚛️ Quantum AI</a>
+			<a href="#ai-lab-hce">🧩 Lab AI berbasis HCE</a>
 			<a href="#matematika-ai">🧮 Matematika AI</a>
             <a href="#jenis-ai">🔬 Jenis AI</a>
             <a href="#manfaat-tantangan">⚖️ Manfaat & Tantangan</a>
             <a href="#contoh-penerapan">🌍 Contoh Penerapan</a>
         </div>
     </nav>
+
 
     <main>
         <section id="definisi">
@@ -963,7 +1082,8 @@ O-E-A berfungsi sebagai <i>alat kontrol filosofis</i> untuk memastikan AI mening
 </ol>
 <p align="justify">
 Masa depan kecerdasan manusia bukan ditentukan oleh AI, tetapi oleh <b>orientasi nilai (aksiologi)</b> dalam memanfaatkan AI sebagai bagian dari sistem kognitif manusia.
-</p>		
+</p>
+		
         </section>
 
         <!-- TEMPATKAN INI SETELAH SECTION #kuantum-ai DAN SEBELUM SECTION #jenis-ai -->
@@ -1091,7 +1211,1026 @@ Masa depan kecerdasan manusia bukan ditentukan oleh AI, tetapi oleh <b>orientasi
         </ol>
         <p align="justify" style="margin-top: 1rem;"><strong>Kesimpulan:</strong> Matematika adalah "bahasa alam semesta" dan juga bahasa AI. Meskipun tools semakin abstrak, fondasi matematika memberikan kekuatan untuk tidak hanya menggunakan AI, tetapi juga menciptakan, memahami, dan mengendalikannya terutama saat kita bergerak menuju era AI Otonom dan Quantum AI.</p>
     </div>
+	
+	<h3>⭐ Hybrid Chaotic Error (HCE): Menemukan Keteraturan Fraktal Tersembunyi dalam Noise NISQ</h3>
+	<div class="interactive-element">
+        <h4><b>1. Pendahuluan</b><span class="expand-icon"></span></h4>
+        <div class="toggle-content">
+	     <p align="justify">
+		  Perkembangan komputasi kuantum mengalami percepatan signifikan dalam dekade terakhir. Namun, perangkat <i>Noisy Intermediate-Scale Quantum</i> (NISQ) masih berada pada fase teknis yang penuh keterbatasan: qubit yang rapuh, tingkat <i>decoherence</i> tinggi, <i>gate fidelity</i> yang tidak stabil, serta noise sistemik yang sulit diprediksi. Tantangan-tantangan ini menghalangi perangkat NISQ untuk mencapai performa komputasi yang melampaui sistem klasik secara konsisten. Pendekatan tradisional seperti <i>quantum error correction</i> (QEC) dan <i>noise mitigation</i> telah memberikan kemajuan, tetapi masih jauh dari memadai untuk mengatasi kompleksitas noise yang terjadi pada sistem nyata.
+		 </p>
+		 <p align="justify">
+		  Di sisi lain, alam semesta memberi petunjuk menarik: banyak fenomena yang tampak kacau—badai tropis, turbulensi awan, pola cangkang hewan, susunan biji bunga matahari, pertumbuhan daun, bahkan dinamika gelombang laut—dalam analisis mendalam ternyata mengikuti struktur fraktal yang sangat teratur. Pola-pola tersebut menunjukkan bahwa “kekacauan” sering kali bukan ketidakteraturan absolut, melainkan keteraturan tinggi yang tersembunyi, hanya dapat terlihat melalui model matematis yang tepat. Prinsip inilah yang mendorong pemikiran bahwa sistem fisik yang tampak acak dapat menyimpan struktur deterministik di dalamnya.
+		 </p>
+		 <p align="justify">
+		  Berangkat dari analogi tersebut, BiMath mengajukan sebuah pendekatan baru yang disebut <b>Hybrid Chaotic Error (HCE)</b>. Model ini berangkat dari gagasan inti bahwa <b>dalam ketidakpastian terdapat kepastian</b>, yaitu bahwa noise kuantum yang dihasilkan perangkat NISQ tidak sepenuhnya acak, tetapi mungkin memiliki pola fraktal atau dinamika chaos deterministik yang dapat diekstraksi dan dimodelkan. Dengan kata lain, jika banyak fenomena alam yang tampak kacau mengandung keteraturan tersembunyi, maka <i>error</i> kuantum yang muncul dalam perangkat NISQ pun berpotensi memiliki struktur serupa.
+		 </p>
+		 <p align="justify">
+		  Pendekatan HCE menempatkan BiMath sebagai pengusul kerangka kerja matematis baru yang menjembatani teori chaos, fraktal, dan dinamika deterministik dengan fenomena error kuantum. HCE tidak hanya sekadar memperbaiki atau mengurangi noise, tetapi berusaha <b>mengungkap struktur internalnya</b>. Jika struktur ini dapat ditemukan, maka error tidak lagi dianggap gangguan tak teratur, melainkan sinyal dengan geometri tertentu yang dapat diprediksi atau bahkan dimanfaatkan. Paradigma ini berbeda dari pendekatan QEC klasik yang mengasumsikan noise sebagai proses stokastik yang tidak memiliki pola internal.
+		 </p>
+		 <p align="justify">
+		  Pendekatan HCE memberikan dua implikasi besar. Pertama, ia membuka kemungkinan metode prediksi error baru yang berbasis rekonstruksi dinamika chaos (misalnya melalui Lyapunov spectrum, fractal dimension, atau <i>embedding</i> Takens). Kedua, ia memberi peluang bahwa perangkat NISQ dapat dimodelkan dengan lebih akurat melalui kombinasi model probabilistik dan model deterministik-fraktal. Dalam skenario terbaik, hal ini memungkinkan perangkat NISQ untuk beroperasi lebih stabil tanpa perlu menerapkan skema QEC berat yang memerlukan ribuan qubit.
+		 </p>
+		 <p align="justify">
+		  Dengan demikian, gagasan HCE menawarkan arah riset baru: menggeser pemahaman kita mengenai noise kuantum dari “gangguan acak tak terkontrol” menjadi “kompleksitas terstruktur yang dapat dimodelkan”. Jika keteraturan dalam kekacauan benar-benar ada pada noise kuantum, maka HCE dapat menjadi terobosan yang memungkinkan sistem NISQ melampaui keterbatasannya, membuka jalan menuju komputasi kuantum yang lebih dapat diandalkan sebelum tercapainya perangkat <i>fault-tolerant</i> penuh.
+		 </p>
+        </div>
+    </div>
+
+    <div class="interactive-element">
+        <h4><b>2. Latar Belakang</b><span class="expand-icon"></span></h4>
+        <div class="toggle-content">
+	     <p align="justify">
+		  Fenomena error pada perangkat <i>Noisy Intermediate-Scale Quantum</i> (NISQ) merupakan salah satu tantangan terbesar dalam komputasi kuantum modern. Untuk memahami pendekatan <i>Hybrid Chaotic Error</i> (HCE), diperlukan landasan teoritis yang menjelaskan bagaimana matematika, khususnya teori chaos, struktur fraktal, dan dinamika nonlinier dapat relevan dalam menjelaskan perilaku sistem kuantum yang tampak acak. Bagian ini membahas fondasi teoretis HCE dengan tiga pijakan utama: (1) karakteristik error pada perangkat NISQ, (2) prinsip dasar chaos dan fraktal, dan (3) hubungan konseptual antara kedua domain tersebut.
+		  </p>
+         <h3><b>1. Karakteristik Error pada Sistem NISQ</b></h3>
+         <p align="justify">
+          NISQ adalah perangkat kuantum dengan puluhan hingga beberapa ratus qubit yang belum memiliki mekanisme <i>fault-tolerance</i> penuh. Error pada perangkat ini umumnya dimodelkan sebagai proses stokastik: <i>decoherence</i>, fluktuasi frekuensi, <i>crosstalk</i>, dan ketidakstabilan <i>gate</i>. Pendekatan konvensional mengasumsikan bahwa noise bersifat <b>random</b>, tidak berstruktur, dan tidak dapat diprediksi pada resolusi tinggi.
+		  </p>
+          <p align="justify">
+           Namun, penelitian empiris menunjukkan beberapa indikasi penting:
+          </p>
+		  <ul align="justify">
+           <li>Error pada qubit sering berkorelasi dalam waktu (time-correlated noise), bukan murni white noise.</li>
+           <li>Beberapa jenis error menunjukkan pola periodik teredam (<i>damped oscillations</i>).</li>
+           <li>Crosstalk antar qubit dapat menunjukkan dinamika nonlinier.</li>
+           <li>Kalibrasi ulang berkala kadang menghasilkan perubahan yang mengikuti pola sistemik, bukan acak total.</li>
+          </ul>
+		  <p align="justify">
+           Temuan-temuan ini menunjukkan bahwa tidak semua noise di perangkat NISQ bersifat “benar-benar acak”. Sebagian mungkin berasal dari sumber deterministik yang kompleks: vibrasi mikro, fluktuasi arus, <i>frequency drift</i>, atau resonansi elektromagnetik.
+		  </p>
+          <p>
+           Argumentasi kunci:
+          </p>
+		  
+		  <p align="justify">
+		  <button>
+            <b>Jika sumber fisiknya deterministik, maka output error-nya pun seharusnya memiliki struktur deterministik meskipun tampak kacau.</b>
+		   </button>
+		  </p>
+		  
+         <p align="justify">
+          Ini membuka ruang bagi model matematis berbasis chaos dan fraktal.
+		 </p>
+
+         <h3> <b>2. Prinsip Dasar Chaos dan Struktur Fraktal</b></h3>
+         <h4><b>2.1 Chaos Deterministik</b></h4>
+         <p align="justify">
+          Chaos bukanlah acak. Chaos adalah dinamika deterministik di mana perubahan kecil pada kondisi awal menghasilkan perbedaan besar pada output (sensitivitas terhadap kondisi awal). Sistem chaotic memiliki:
+		 </p>
+         <ul align="justify">
+          <li>hukum deterministik,</li>
+          <li>tetapi menghasilkan pola yang tampak acak,</li>
+          <li>dan menyimpan struktur yang dapat direkonstruksi.</li>
+        </ul>
+		<p align="justify">
+          Contoh klasik: Lorenz system, logistic map, turbulensi fluida.
+        </p>
+		<p align="justify">
+        Prinsip yang menjadi dasar HCE adalah:
+        </p>
+		<p align="justify">
+		<button>
+          <b>Sistem yang tampak acak belum tentu tanpa aturan; banyak “kekacauan” berasal dari hukum deterministik berdimensi tinggi.</b>
+		</button>
+	    </p>
+
+        <h4><b>2.2 Fraktal dan Keteraturan dalam Kekacauan</b></h4>
+        <p align="justify">
+         Fraktal adalah struktur yang memiliki pola yang berulang pada berbagai skala (self-similarity). Alam penuh dengan fraktal:
+		</p>
+        <ul align="justify">
+         <li>pola cangkang nautilus,</li>
+         <li>distribusi biji bunga matahari,</li>
+         <li>bentuk petir,</li>
+         <li>topologi awan dan badai,</li>
+         <li>bahkan jaringan pembuluh darah.</li>
+        </ul>
+		<p align="justify">
+         Fenomena tersebut tampak “acak” pada pandangan kasual, tetapi matematisnya sangat teratur.
+        </p>
+		<p align="justify">
+         Keterkaitan dengan HCE adalah pada prinsip:
+		 </p>
+		 <p align="justify">
+         <button>
+          <b>Di balik kekacauan yang tampak, sering terdapat geometri teratur yang dapat dimodelkan.</b>
+         </button>
+         </p>
+
+        <h3><b>3. Menghubungkan Chaos-Fraktal dengan Error NISQ</b></h3>
+        <p align="justify">
+         Pendekatan konvensional memodelkan noise kuantum menggunakan teori probabilitas. Namun, jika error kuantum memiliki komponen deterministik, maka pendekatan stokastik tidak cukup. Hal inilah yang melahirkan hipotesis HCE.
+        </p>
+        <h4><b>3.1 Jika error bersumber dari mekanisme deterministik</b></h4>
+         <p>Maka:</p>
+        <ul align="justify">
+          <li>error akan memiliki jejak dinamika nonlinear,</li>
+          <li>akan muncul pola berulang dalam ruang dan waktu,</li>
+          <li>dan struktur fraktal dapat terbentuk ketika sistem direpresentasikan sebagai ruang keadaan (<i>state space reconstruction</i>).</li>
+		</ul>
+        <p align="justify">
+         Dalam chaos theory, struktur semacam ini disebut <b>strange attractor</b>.
+        </p>
+		<p align="justify">
+         Argumentasi ilmiah yang kuat:
+        </p>
+		<p align="justify">
+		<button>
+         <b align="justify">Jika noise kuantum sepenuhnya acak, ia tidak akan memunculkan dimensi fraktal yang stabil. Namun bila ada keteraturan tersembunyi, maka analisis fraktal akan mengungkapkan nilai dimensi Hausdorff, korelasi, atau Lyapunov spectrum yang bermakna.</b>
+        </button>
+		</p>
+        <h4><b>3.2 Jika error bersifat campuran: stokastik + deterministik</b></h4>
+        <p align="justify">
+         Inilah yang disebut pendekatan “Hybrid” dalam HCE:
+        </p>
+		<ul align="justify">
+         <li>Komponen stokastik tetap dimodelkan dengan teori probabilistik.</li>
+         <li>Komponen deterministik dicari polanya menggunakan metode chaos:
+          <ul align="justify">
+           <li> <i>Time-delay embedding</i> (Takens Theorem),</li>
+           <li> Perhitungan <i>correlation dimension</i>,</li>
+           <li> Estimasi <i>Lyapunov exponent</i>,</li>
+           <li> Spektrum <li>frequency drift</i> yang tidak random.</li>
+          </ul>
+		  </li>
+		</ul>
+		<p align="justify">
+         Dengan pendekatan hybrid ini, error tidak sekadar diperlakukan sebagai gangguan, tetapi sebagai sinyal kompleks yang dapat diuraikan.
+        </p>
+		
+        <h3><b>4. Implikasi Teoritis bagi NISQ</b></h3>
+        <p align="justify">
+          Pendekatan HCE menimbulkan dua konsekuensi teoritis besar:
+        </p>
+        <h4><b>4.1 Error dapat diprediksi sebagian</b></h4>
+        <p align="justify">
+         Jika komponen deterministik dapat diidentifikasi, model prediksi jangka pendek dapat dibuat. Ini memberi peluang:
+		</p>
+        <ul align="justify">
+         <li>menstabilkan operasi qubit,</li>
+         <li>mengurangi variasi gate,</li>
+         <li>meningkatkan <i>coherence time</i> efektif tanpa QEC berat.</li>
+        </ul>
+        
+		<h4><b>4.2 QEC tidak lagi satu-satunya pendekatan</b></h4>
+        <p align="justify">
+         HCE menawarkan lapisan koreksi baru sebelum QEC diterapkan.
+		</p>
+        <p align="justify">
+         Pendekatan konvensional:
+        </p>
+		<p align="justify">
+		<button><b>
+         noise → QEC</b>
+		</button>
+		</p>
+        <p align="justify">
+         Pendekatan HCE:
+		</p>
+        <p align="justify">
+		<button><b>
+         noise → pemisahan struktur chaotic → prediksi → mitigasi → QEC</b>
+        </button>
+		</p>
+		<p align="justify">
+         Ini mengurangi beban QEC, menghemat qubit, dan meningkatkan performa NISQ.
+		</p>
+
+        <h3><b>5. Fondasi Argumentatif HCE</b></h3>
+        <p align="justify">
+          Secara ringkas, argumentasi inti HCE berdiri atas empat pilar:
+		</p>
+        <ol align="justify">
+         <li> <b>Alam penuh sistem chaotic yang tampak acak tetapi sebenarnya teratur.</li>
+         <li><b>Tidak semua error NISQ bersifat stokastik murni; sebagian menunjukkan pola deterministik.</b></li>
+         <li><b>Chaos theory menyediakan alat matematis untuk mengekstraksi keteraturan dalam kekacauan.</b></li>
+         <li><b>Jika keteraturan itu ada, maka noise kuantum dapat diprediksi dan dimitigasi lebih efektif.</b></li>
+        </ol>
+		<p align="justify">
+          Dengan demikian, HCE muncul sebagai pendekatan yang wajar, logis, dan konsisten dengan perkembangan teori modern.
+		</p>
+        </div>
+	</div>
+
+
+<div class="interactive-element">
+        <h4><b>3. Formulasi Matematis Dasar HCE (Hybrid Chaotic Error)</b><span class="expand-icon"></span></h4>
+        <div class="toggle-content">
+
+          <p align="justify">
+            Kerangka <b>HCE (Hybrid Chaotic Error)</b> diperkenalkan oleh <b>BiMath</b> sebagai pendekatan 
+            matematis baru untuk membaca struktur tersembunyi dalam noise pada perangkat 
+            <b>NISQ (Noisy Intermediate-Scale Quantum)</b>. Inti pemikirannya adalah bahwa noise kuantum 
+            tidak bersifat acak murni, melainkan tersusun atas dua komponen: 
+            (1) bagian deterministik-fraktal (berdimensi rendah), dan 
+            (2) bagian chaotic-stochastic (fluktuatif). 
+            HCE mempelajari bagaimana pola fraktal deterministik tersebut dapat diekstraksi untuk 
+            melakukan rekonstruksi keadaan awal secara stabil.
+            </p>
+
+<h3 align="justify">3.1 Ruang Keadaan, Pemetaan Kuantum, dan Norm</h3>
+
+<p align="justify">
+Misalkan sistem kuantum didefinisikan pada ruang Hilbert:
+</p>
+
+<p align="center">
+\[
+\mathcal{H} \cong \mathbb{C}^{2^n}
+\]
+</p>
+
+<p align="justify">
+dengan ruang keadaan:
+</p>
+
+<p align="center">
+\[
+\mathcal{D}(\mathcal{H}) = \{ \rho \succeq 0,\; \mathrm{Tr}(\rho)=1 \}.
+\]
+</p>
+
+<p align="justify">
+Saluran noise pada perangkat NISQ dimodelkan sebagai CPTP channel:
+</p>
+
+<p align="center">
+\[
+\mathcal{E} : \mathcal{D}(\mathcal{H}) \to \mathcal{D}(\mathcal{H}),
+\]
+</p>
+
+<p align="justify">
+yang direpresentasikan dalam bentuk superoperator melalui vectorization:
+</p>
+
+<p align="center">
+\[
+\rho \mapsto |\rho\rangle\rangle, \qquad 
+\mathcal{E} \mapsto S_{\mathcal{E}}.
+\]
+</p>
+
+<p align="justify">
+Norma yang digunakan:
+</p>
+
+<p align="center">
+\[
+\| \cdot \|: \text{operator norm}, \qquad
+\| \cdot \|_{\diamond} : \text{diamond norm}.
+\]
+</p>
+
+<h3 align="justify">3.2 Asumsi Inti HCE: Struktur Hibrida</h3>
+
+<p align="justify">
+HCE berangkat dari hipotesis bahwa noise dapat dipisah menjadi dua komponen:
+</p>
+
+<p align="center">
+\[
+\mathcal{E} = \mathcal{E}_{\mathrm{det}} + \mathcal{E}_{\mathrm{chaos}}.
+\]
+</p>
+
+<p align="justify">
+dengan karakteristik:
+</p>
+
+<ul>
+<li><b>\(\mathcal{E}_{\mathrm{det}}\)</b>: komponen deterministik-fraktal, berstruktur low-rank dan metastable.</li>
+<li><b>\(\mathcal{E}_{\mathrm{chaos}}\)</b>: komponen chaotic-stochastic, bersifat turbulent dan masking.</li>
+</ul>
+
+<p align="justify">
+Dalam bentuk superoperator:
+</p>
+
+<p align="center">
+\[
+S_{\mathcal{E}} = 
+\sum_{i=1}^{r} \lambda_i 
+|v_i\rangle\rangle\langle\langle w_i|
++ \mathcal{R},
+\]
+</p>
+
+<p align="justify">
+dengan \(r\) kecil, \(v_{i}\) eigenmode deterministik, dan 
+\(\mathcal{R}\) adalah bagian chaotic. 
+Menurut HCE, mode pertama inilah yang memuat pola fraktal tersembunyi.
+</p>
+
+<h3 align="justify">3.3 Certainty Manifold</h3>
+
+<p align="justify">
+BiMath mendefinisikan ruang deterministik sebagai:
+</p>
+
+<p align="center">
+\[
+\mathcal{K} = \mathrm{span}\{ v_1, \dots, v_r \}.
+\]
+</p>
+
+<p align="justify">
+Ruang ini disebut:
+</p>
+
+<p align="center"><b>certainty manifold</b></p>
+
+<p align="justify">
+karena di sanalah keteraturan noise berada. Proyeksi ortogonal:
+</p>
+
+<p align="center">
+\[
+\mathcal{P} : \mathbb{C}^{4^n} \to \mathcal{K}.
+\]
+</p>
+
+<h3 align="justify">3.4 Pemetaan Rekonstruksi HCE</h3>
+
+<p align="justify">
+Jika keadaan ter-noise adalah \(\rho' = \mathcal{E}(\rho)\), maka HCE membangun pemetaan 
+rekonstruksi:
+</p>
+
+<p align="center">
+\[
+\mathcal{R} : \mathcal{K} \to \mathcal{D}(\mathcal{H})
+\]
+</p>
+
+<p align="justify">
+sehingga:
+</p>
+
+<p align="center">
+\[
+\|\rho - \mathcal{R}(\mathcal{P}(\rho'))\|_1 \le \varepsilon.
+\]
+</p>
+
+<p align="justify">
+Maknanya: HCE memulihkan bagian deterministik yang hilang akibat komponen chaotic.
+</p>
+
+<h3 align="justify">3.5 Formulasi Variational pada NISQ</h3>
+
+<p align="justify">
+Implementasi praktis HCE dilakukan melalui optimasi variational:
+</p>
+
+<p align="center">
+\[
+{\min}_{\theta}
+\left[
+\mathbb{E}_\rho \|
+\mathcal{R}_\theta(\mathcal{P}(\mathcal{E}(\rho)))
+- \rho
+\|_1
++ \alpha\, \Omega_{\mathrm{rank}}(\mathcal{P})
++ \beta\, \Omega_{\mathrm{smooth}}(\mathcal{R}_\theta)
+\right].
+\]
+</p>
+
+<h3 align="justify">3.6 Kompleksitas Sampel</h3>
+
+<p align="justify">
+Jika rank efektif adalah \(r\), gap spektral \(\Delta\), dan variansi chaotic 
+\(\sigma^2\), jumlah sampel untuk estimasi memadai adalah:
+</p>
+
+<p align="center">
+\[
+N = O\left(
+\frac{r\, \mathrm{poly}(1/\Delta)\, \sigma^2}
+{\varepsilon^2}
+\right).
+\]
+</p>
+
+<h3 align="justify">3.7 Interpretasi Menurut BiMath</h3>
+
+<ul>
+<li><b>Komponen deterministik</b> → struktur fraktal tersembunyi.</li>
+<li><b>Komponen chaotic</b> → turbulensi kuantum yang menyamarkan struktur.</li>
+<li><b>Hybrid Chaotic Error</b> → interaksi keduanya, bukan noise acak murni.</li>
+<li><b>Tugas HCE</b> → mengekstraksi keteraturan dari kekacauan.</li>
+</ul>
+
+   
+  </div>
+</div>
+
+    <div class="interactive-element">
+        <h4><b>4. Formulasi Parametris HCE (Variational)</b><span class="expand-icon"></span></h4>
+        <div class="toggle-content">
+          <p align="justify">
+            Untuk implementasi praktis pada perangkat NISQ, HCE dapat diparametrisasi dengan parameter \(\theta\) sehingga peta-proyeksi dan peta-rekonstruksi menjadi fungsi terparametrisasi:
+          </p>
+
+    <p align="justify">
+      \[
+        \mathcal{P}_\theta : \mathcal{L}(\mathcal{H}) \to \mathcal{K}, \qquad
+        \mathcal{R}_\phi : \mathcal{K} \to \mathcal{D}(\mathcal{H}),
+      \]
+      di mana \(\theta,\phi\) adalah parameter yang dioptimalkan (mis. bobot jaringan kecil, koefisien proyeksi, atau parameter ansatz variational).
+    </p>
+
+    <p align="justify">
+      Fungsi loss umum yang dipakai:
+    </p>
+
+    <p align="justify">
+      \[
+        \mathcal{L}(\theta,\phi)
+        = \mathbb{E}_{\rho\sim\mathcal{D}}\!
+          \Big[
+            \ell\!\big(\rho,\,\mathcal{R}_\phi(\mathcal{P}_\theta(\mathcal{E}(\rho)))\big)
+          \Big]
+        + \alpha\,\Omega_{\mathrm{rank}}(\mathcal{P}_\theta)
+        + \beta\,\Omega_{\mathrm{reg}}(\phi),
+      \]
+      di mana \(\ell\) bisa berupa trace-distance \(\|\cdot\|_1\) atau infidelity \(1-F(\cdot,\cdot)\). Regularizer \(\Omega_{\mathrm{rank}}\) mendorong mapping low-rank, sedangkan \(\Omega_{\mathrm{reg}}\) menjaga stabilitas numerik.
+    </p>
+
+    <p align="justify">
+      Optimisasi dilakukan menggunakan metode stochastik (mis. SGD/Adam) pada sampel pengukuran, atau algoritme Bayesian untuk kuantifikasi ketidakpastian dalam estimasi parameter.
+    </p>
+  </div>
+</div>
+
+<div class="interactive-element">
+  <h4><b>5. Identifiabilitas & Syarat Teoretis</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+    <p align="justify">
+      Identifiabilitas subruang \(\mathcal{K}\) dan akurasi rekonstruksi bergantung pada beberapa syarat teoretis:
+    </p>
+
+    <ol align="justify">
+      <li><b>Asumsi A1 (Low-rank dominance).</b> Ada \(r\)-dimensional dominant block pada \(S_{\mathcal{E}}\) sehingga komposisi low-rank memberikan aproksimasi baik: \(\| S_{\mathcal{E}} - S_{\mathrm{dom}}\| \le \delta\) dengan \(\delta\) kecil.</li>
+
+      <li><b>Observabilitas.</b> Basis \(\{V_i\}\) yang spanning \(\mathcal{K}\) harus dapat direkonstruksi dari pengukuran yang tersedia; secara formal, ada operator pengukuran/POVM yang menghasilkan informasi linear cukup tentang koordinat pada \(\mathcal{K}\).</li>
+
+      <li><b>Gap spektral.</b> Terdapat gap \(\Delta = |\lambda_r| - |\lambda_{r+1}|\) (atau ekuivalen) yang memisahkan mode-mode dominan dari spektrum sisanya; semakin besar \(\Delta\), semakin stabil estimasi subruang terhadap noise statistik.</li>
+
+      <li><b>Keterbatasan sampling.</b> Estimator \(\widehat{\mathcal{P}}\) harus mampu memanfaatkan jumlah sampel \(N\) yang tersedia untuk mencapai error subspace \(\eta\) kecil.</li>
+    </ol>
+
+    <p align="justify">
+      Secara singkat, jika A1, observabilitas, dan gap spektral terpenuhi, maka menggunakan perturbation theory (mis. Davis–Kahan) dan analisis konsentrasi, kita dapat membangun estimator yang memberikan bound rekonstruksi berbentuk:
+    </p>
+
+    <p align="justify">
+      \[
+        \mathbb{E}_{\rho}\big\|
+          \rho - \mathcal{R}_\phi\big(\widehat{\mathcal{P}}(\mathcal{E}(\rho))\big)
+        \big\|_1
+        \le C(\delta + \eta + \xi),
+      \]
+      di mana \(\eta\) adalah error estimasi subruang akibat sampling, \(\xi\) error optimisasi/regularisasi, dan \(C\) konstanta bergantung kondisi numerik.
+    </p>
+  </div>
+</div>
+
+<div class="interactive-element">
+  <h4><b>6. Sketsa Bukti (Perturbation & Subspace Error)</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+    <p align="justify">
+      Sketsa bukti untuk bound rekonstruksi memanfaatkan langkah-langkah berikut:
+    </p>
+
+    <ol align="justify">
+      <li>Decompose \(S_{\mathcal{E}} = S_{\mathrm{dom}} + \mathcal{R}\) dengan \(\| \mathcal{R}\|\le\delta\).</li>
+      <li>Gunakan hasil Davis–Kahan untuk mengikat sudut subruang antara \(\mathrm{range}(S_{\mathrm{dom}})\) dan \(\mathrm{range}(\widehat S_{\mathrm{dom}})\) yang diestimasi dari data; ini memberikan batas \(\eta\) terhadap perbedaan proyeksi.</li>
+      <li>Analisis propagasi error melalui peta rekonstruksi linear/variational untuk mendapatkan kontribusi total dari \(\delta,\eta,\xi\) terhadap norma trace pada keadaan akhir.</li>
+    </ol>
+
+    <p align="justify">
+      Detail teknis melibatkan kontrol norma operator, stabilitas pseudo-inverse pada koordinat \(\{V_i\}\), dan pengaruh regularisasi numerik pada inversi.
+    </p>
+  </div>
+</div>
+
+<div class="interactive-element">
+  <h4><b>7. Cara Mengidentifikasi Subruang \(\mathcal{K}\) Secara Praktis</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+    <p align="justify">
+      Pendekatan praktis mengambil jalan tengah antara tomography penuh (mahal) dan heuristik sederhana. Metode yang direkomendasikan:
+    </p>
+
+    <h4><b>7.1 Estimasi berbasis data (data-driven spectral method)</b></h4>
+    <ul align="justify">
+      <li>Kumpulkan hasil pengukuran untuk himpunan probe state \(\{\rho_j\}_{j=1}^N\).</li>
+      <li>Bentuk matriks transfer empiris pada ruang Liouville:
+        \[
+          M = \sum_{j=1}^{N} |\mathcal{E}(\rho_j)\rangle\rangle \langle\langle \phi_j |,
+        \]
+        di mana \(|\phi_j\rangle\rangle\) adalah vektor fitur/dual yang sesuai.</li>
+      <li>Lakukan SVD/PCA pada \(M\) untuk mendapatkan singular vectors \(u_1,\dots,u_r\). Mode-mode dominan ini memberikan \(\widehat{\mathcal{K}}\).</li>
+    </ul>
+
+    <h4><b>7.2 Model-based (Lindblad / metastability)</b></h4>
+    <ul align="justify">
+      <li>Jika model generator \(\mathcal{L}\) tersedia, analisis spektrum \(\mathcal{L}\) pada evolusi \(e^{t\mathcal{L}}\) untuk menemukan slow modes (eigenvalues dengan real part kecil).</li>
+      <li>Proyeksikan state ke eigenmodes dominan dan gunakan informasi fisik untuk membatasi ruang pencarian \(\mathcal{K}\).</li>
+    </ul>
+
+    <h4><b>7.3 Regularisasi & sparsity</b></h4>
+    <p align="justify">
+      Terapkan penalti seperti nuclear norm, group-sparsity atau penalti struktur fraktal (jika cocok) untuk menstabilkan estimasi pada jumlah sampel terbatas.
+    </p>
+  </div>
+</div>
+
+<div class="interactive-element">
+  <h4><b>8. Loss Function, Regularisasi, dan Stabilitas Numerik</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+    <p align="justify">
+      Formulasi loss yang direkomendasikan mengombinasikan fidelity-based loss dengan penalti struktural:
+    </p>
+
+    <p align="justify">
+      \[
+        \min_{\theta,\phi}
+        \mathbb{E}_{\rho}
+        \Big[
+          \| \rho - \mathcal{R}_\phi(\mathcal{P}_\theta(\mathcal{E}(\rho))) \|_1
+        \Big]
+        + \lambda_1 \, \| \mathcal{P}_\theta \|_{\ast}
+        + \lambda_2 \, \mathcal{S}(\phi),
+      \]
+      di mana \(\|\cdot\|_{\ast}\) adalah nuclear norm (proxy untuk low-rank), dan \(\mathcal{S}(\phi)\) penalti smoothing untuk menghindari overfitting numerik.
+    </p>
+
+    <p align="justify">
+      Untuk stabilitas numerik, disarankan memakai early-stopping, preconditioning, dan validasi silang berbasis hold-out state.
+    </p>
+  </div>
+</div>
+
+<div class="interactive-element">
+  <h4><b>9. Sample Complexity (Sketsa & Ketergantungan)</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+    <p align="justify">
+      Dengan effective rank \(r\), spectral gap \(\Delta\), dan variansi chaotic \(\sigma^2\), jumlah sampel yang diperlukan untuk mencapai error rekonstruksi \(\varepsilon\) mengikuti sketsa:
+    </p>
+
+    <p align="justify">
+      \[
+        N = O\!\left(
+          \frac{r \cdot \mathrm{poly}(1/\Delta) \cdot \sigma^2}
+               {\varepsilon^2}
+        \right).
+      \]
+    </p>
+
+    <p align="justify">
+      Catatan: konstanta dalam \(\mathrm{poly}(1/\Delta)\) bergantung pada kondisi numerik (mis. conditioning dari basis \(\{V_i\}\)) dan desain probe states.
+    </p>
+  </div>
+</div>
+
+<div class="interactive-element">
+  <h4>
+    <b>10. Contoh Matematis Konkret: Low-Rank Perturbation, Hybrid Noise, dan Komponen Chaotic</b>
+    <span class="expand-icon"></span>
+  </h4>
+
+  <div class="toggle-content">
+
+    <p align="justify">
+      Contoh-contoh berikut dimaksudkan untuk mengilustrasikan bagaimana kerangka
+      <b>HCE (Hybrid Chaotic Error)</b> bekerja pada berbagai tingkat struktur noise,
+      mulai dari kasus pedagogis hingga kasus yang benar-benar mencerminkan sifat
+      hybrid dan chaotic.
+    </p>
+
+    <!-- ========================= -->
+    <!-- DEP0LARIZING CHANNEL -->
+    <!-- ========================= -->
+
+    <p align="justify">
+      <b>(a) Depolarizing channel sebagai ilustrasi dasar.</b><br>
+      Model umum perturbasi low-rank ditulis sebagai
+      \(\mathcal{E} = \mathcal{E}_0 + \delta\,\mathcal{E}_1\),
+      dengan \(\mathcal{E}_0\) saluran unitari ideal dan \(\mathcal{E}_1\) noise
+      berdimensi-rendah. Untuk depolarisasi:
+    </p>
+
+    <p align="justify">
+      \[
+        \mathcal{E}(\rho) = (1-p)\rho + p\,\frac{I}{d}.
+      \]
+    </p>
+
+    <p align="justify">
+      Jika \(p<1\), tersedia invers analitik:
+    </p>
+
+    <p align="justify">
+      \[
+        \rho = \frac{\mathcal{E}(\rho) - p\,I/d}{1-p}.
+      \]
+    </p>
+
+    <p align="justify">
+      Dalam konteks HCE, contoh ini menunjukkan pemisahan paling sederhana antara
+      komponen deterministik dan komponen simetris. Namun, karena struktur noise
+      diketahui secara eksplisit dan tidak melibatkan dinamika nonlinier,
+      contoh ini bersifat <i>pedagogis</i> dan belum merepresentasikan aspek chaotic
+      dari HCE.
+    </p>
+
+    <!-- ========================= -->
+    <!-- AMPLITUDE DAMPING -->
+    <!-- ========================= -->
+
+    <p align="justify">
+      <b>(b) Amplitude damping sebagai kasus hybrid non-chaotic.</b><br>
+      Saluran amplitude damping merepresentasikan kehilangan energi yang terstruktur,
+      dengan bentuk matriks densitas keluaran:
+    </p>
+
+    <p align="justify">
+      \[
+        \rho' =
+        \begin{pmatrix}
+          1-\gamma & 0 \\
+          0 & \gamma
+        \end{pmatrix}.
+      \]
+    </p>
+
+    <p align="justify">
+      Dalam kerangka HCE, noise ini dipahami sebagai <b>hybrid</b> karena terdiri dari
+      bagian deterministik (relaksasi energi) dan bagian probabilistik, meskipun
+      tidak bersifat chaotic. Rekonstruksi dilakukan dengan mengekstraksi kembali
+      komponen deterministik dari struktur tersebut.
+    </p>
+
+    <p align="justify">
+      Contoh ini menegaskan bahwa HCE tidak identik dengan chaos, tetapi dengan
+      keberadaan struktur internal yang memungkinkan ekstraksi kepastian.
+    </p>
+
+    <!-- ========================= -->
+    <!-- CHAOTIC PHASE NOISE -->
+    <!-- ========================= -->
+
+    <p align="justify">
+      <b>(c) Noise fase chaotic sebagai realisasi penuh HCE.</b><br>
+      Untuk menangkap aspek chaotic, dipertimbangkan noise fase dengan dinamika
+      nonlinier, misalnya fase \(\theta_n\) yang mengikuti peta logistik:
+    </p>
+
+    <p align="justify">
+      \[
+        \theta_{n+1} = r\,\theta_n(1-\theta_n), \qquad r \approx 3.9.
+      \]
+    </p>
+
+    <p align="justify">
+      Noise ini menghasilkan fluktuasi fase yang tampak acak, tetapi sebenarnya
+      deterministik dan memiliki struktur fraktal. Dalam HCE, dinamika tersebut
+      tidak diperlakukan sebagai noise i.i.d., melainkan sebagai komponen chaotic
+      yang dapat dianalisis melalui pola iteratifnya.
+    </p>
+
+    <p align="justify">
+      Rekonstruksi HCE bertujuan mengekstraksi keteraturan deterministik dari
+      dinamika ini, sehingga keadaan ideal sebelum gangguan fase dapat
+      diperkirakan kembali dalam batas galat tertentu.
+    </p>
+
+    <!-- ========================= -->
+    <!-- EPISTEMOLOGICAL CLOSURE -->
+    <!-- ========================= -->
+
+    <p align="justify">
+      <b>Penegasan epistemologis.</b>
+      Rangkaian contoh di atas menunjukkan bahwa HCE bukan algoritme koreksi error
+      tunggal, melainkan paradigma pembacaan error. Depolarisasi berfungsi sebagai
+      batas bawah ilustratif, amplitude damping sebagai contoh hybrid terstruktur,
+      dan noise fase chaotic sebagai medan utama di mana HCE bekerja secara penuh.
+      Dengan demikian, HCE mendefinisikan kapan dan bagaimana kepastian dapat
+      diekstraksi dari data kuantum yang tampak bising, serta secara eksplisit
+      mengakui batas validitasnya ketika struktur tersebut tidak ada.
+    </p>
+
+  </div>
+</div>
+
+
+<div class="interactive-element">
+  <h4><b>11. Algoritme HCE (Pseudocode)</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+    <p align="justify">
+      Pipeline praktis HCE:
+    </p>
+
+    <ol align="justify">
+      <li><b>Probing / Pengumpulan Data:</b> pilih probe states \(\{\rho_j\}\), jalankan circuit, kumpulkan pengukuran \(\{m_{j,k}\}\).</li>
+      <li><b>Praproses:</b> estimasi vektor empiris \(|\mathcal{E}(\rho_j)\rangle\rangle\) melalui tomografi parsial atau estimasi berbasis POVM.</li>
+      <li><b>Identifikasi Subruang:</b> bentuk matriks transfer empiris \(M\) dan lakukan SVD/PCA untuk mendapat \(\widehat{\mathcal{K}}\).</li>
+      <li><b>Pemelajaran Pemetaan HCE:</b> optimalkan \(\theta,\phi\) pada loss variational (Bagian 4) menggunakan batch sampling dan regularisasi.</li>
+      <li><b>Validasi:</b> uji pada himpunan state terpisah, hitung metrik fidelity/trace-distance.</li>
+      <li><b>Deploy / Feedback:</b> gunakan \(\mathcal{R}_{\phi^*}\) sebagai post-processing atau loop adaptif pada eksperimen.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="interactive-element">
+  <h4><b>12. Metrik Evaluasi Performa</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+    <p align="justify">
+      Metrik yang direkomendasikan:
+    </p>
+
+    <ul align="justify">
+      <li><b>Fidelity:</b>
+        \[
+          \mathcal{F}(\rho,\hat{\rho})
+          = \big(\mathrm{Tr}\sqrt{\sqrt{\rho}\,\hat{\rho}\,\sqrt{\rho}}\big)^2.
+        \]
+      </li>
+
+      <li><b>Trace distance:</b> \(\|\rho - \hat{\rho}\|_1.\)</li>
+
+      <li><b>Improvement ratio:</b>
+        \[
+          \Delta = \mathbb{E}\big[\mathcal{F}_{\text{post}} - \mathcal{F}_{\text{pre}}\big].
+        \]
+      </li>
+
+      <li><b>Kurva kompleksitas sampel:</b> plot \(\varepsilon\) terhadap \(N\) untuk menilai trade-off sumber daya dan akurasi.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="interactive-element">
+  <h4><b>13. Batasan, Ketepatan Klaim, dan Kesimpulan</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+    <p align="justify">
+      Batasan penting:
+    </p>
+
+    <ul align="justify">
+      <li>Jika noise bersifat white-noise murni tanpa struktur, HCE tidak memberikan peningkatan signifikan.</li>
+      <li>Keberhasilan HCE sangat bergantung pada observabilitas dan gap spektral; kondisi ini harus diverifikasi empiris untuk setiap platform.</li>
+      <li>Estimasi subruang dan optimisasi variational rentan terhadap overfitting bila jumlah sampel terlalu kecil—regularisasi dan validasi kritis.</li>
+    </ul>
+
+    <p align="justify">
+      <b>Kesimpulan:</b> HCE (Hybrid Chaotic Error) adalah kerangka yang menegaskan bahwa dalam noise NISQ terdapat kombinasi deterministik dan chaotic yang, jika terdeteksi dan dimanfaatkan, memungkinkan rekonstruksi keadaan/observable yang lebih akurat dengan biaya sampel jauh lebih rendah dibanding tomography penuh. Klaim ini bersifat kondisional dan empiris dapat diuji dan dipalsukan pada hardware nyata.
+    </p>
+  </div>
+</div>
+
 </section>
+
+<!-- ================================================= -->
+<!--        LABORATORIUM AI & HCE — VERSI FINAL        -->
+<!-- ================================================= -->
+
+<section id="ai-lab-hce">
+<h2 align="center">
+    Laboratorium AI Digital Berbasis Kerangka HCE (Hybrid Chaotic Error)
+</h2>
+
+<p align="justify">
+    Bagian ini menyajikan kerangka konseptual dan ilustrasi matematis dari pendekatan
+    <b>HCE (Hybrid Chaotic Error)</b> yang diperkenalkan oleh BiMath sebagai paradigma
+    pembacaan struktur kesalahan dan ketidakpastian pada sistem kecerdasan buatan
+    dan komputasi kuantum modern.
+</p>
+<!-- ========================= -->
+<!--     PENDAHULUAN UMUM      -->
+<!-- ========================= -->
+
+<p align="justify">
+    Dokumen HTML ini menyajikan sebuah platform interaktif untuk memahami dan mengeksplorasi perkembangan Kecerdasan Buatan (Artificial Intelligence/AI) beserta dampaknya terhadap kehidupan manusia. Dengan menggabungkan penjelasan teoritis, contoh penggunaan, dan penelusuran berbasis teknologi, halaman ini dirancang sebagai sebuah <b>“Laboratorium AI” digital</b> yang bersifat terbuka, reflektif, dan mudah diakses.
+</p>
+
+<p align="justify">
+    Berbeda dari pendekatan populer yang menempatkan AI semata-mata sebagai persoalan rekayasa algoritmik, platform ini juga memperkenalkan kerangka konseptual <b>HCE (Hybrid Chaotic Error)</b> yang dirumuskan oleh <b>BiMath</b>. Kerangka ini digunakan untuk membaca hubungan mendalam antara matematika, kecerdasan, dan struktur kesalahan (error) pada sistem komputasi modern, khususnya dalam konteks komputasi kuantum NISQ.
+</p>
+
+<hr>
+
+<!-- ========================= -->
+<!--     BAGIAN HCE — DEFINISI -->
+<!-- ========================= -->
+<div class="interactive-element">
+  <h4><b>1. Kerangka Konseptual HCE (Hybrid Chaotic Error)</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+
+<p align="justify">
+    <b>HCE (Hybrid Chaotic Error)</b> merupakan pendekatan konseptual yang diperkenalkan oleh BiMath untuk membaca struktur kesalahan pada sistem komputasi kuantum, khususnya pada perangkat NISQ. Dalam kerangka ini, error tidak diperlakukan sebagai gangguan acak semata, melainkan sebagai <b>kombinasi antara komponen deterministik dan komponen ketidakpastian terstruktur</b> yang membentuk pola hybrid.
+</p>
+
+<p align="justify">
+    HCE berangkat dari gagasan bahwa di dalam noise yang tampak acak, terdapat keteraturan fraktal, slow-modes, dan jejak deterministik yang dapat diungkap melalui pembacaan matematis yang tepat. Dengan demikian, error dipahami sebagai <b>objek matematis</b>, bukan sekadar keterbatasan teknis.
+</p>
+
+<p align="justify">
+    Secara filosofis, HCE memadukan tiga dimensi utama:
+    <b>(1) Ontologi</b> — hakikat dan struktur error;
+    <b>(2) Epistemologi</b> — cara mengenali dan mengekstraksi struktur tersembunyi;
+    <b>(3) Aksiologi</b> — tujuan dan nilai pemahaman error bagi pengembangan teknologi.
+    Ketiga dimensi ini diperlakukan sebagai satu kesatuan yang tak terpisahkan.
+</p>
+
+<hr>
+</div>
+</div>
+<!-- ========================= -->
+<!--     CONTOH 6: DEPOLARIZING -->
+<!-- ========================= -->
+<div class="interactive-element">
+  <h4><b>2. Contoh Numerik Formal: Depolarizing Channel</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+
+<p align="justify">
+    Salah satu model noise paling umum pada perangkat NISQ adalah saluran depolarizing:
+</p>
+
+<p align="justify">
+\[
+\rho' = (1-p)\rho + p \frac{I}{2}
+\]
+</p>
+
+<p align="justify">
+    Untuk keadaan ideal:
+</p>
+
+<p align="justify">
+\[
+\rho = |0\rangle\langle 0| =
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+\]
+</p>
+
+<p align="justify">
+    Ambil tingkat noise \( p = 0.30 \). Maka hasil pengukuran noisy adalah:
+</p>
+
+<p align="justify">
+\[
+\rho' =
+\begin{pmatrix}
+0.85 & 0 \\
+0 & 0.15
+\end{pmatrix}
+\]
+</p>
+
+<p align="justify">
+    Tanpa HCE, matriks ini hanya dibaca sebagai distribusi probabilistik yang tampak tidak stabil.
+</p>
+
+<p align="justify">
+    Dalam kerangka HCE, noise dipisahkan menjadi komponen deterministik dan komponen chaotic-symmetric. Rekonstruksi konseptual diberikan oleh:
+</p>
+
+<p align="justify">
+\[
+\rho_{\text{HCE}} = \frac{\rho' - p\frac{I}{2}}{1-p}
+\]
+</p>
+
+<p align="justify">
+\[
+\rho_{\text{HCE}} =
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+= |0\rangle\langle 0|
+\]
+</p>
+
+<p align="justify">
+<b>HCE menunjukkan bahwa keadaan ideal tetap tersimpan sebagai struktur deterministik di dalam noise.</b>
+</p>
+
+<hr>
+</div>
+</div>
+<!-- ========================= -->
+<!--     CONTOH 7: AMPLITUDE DAMPING -->
+<!-- ========================= -->
+<div class="interactive-element">
+  <h4><b>3. Contoh Numerik Kedua: Amplitude Damping</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+
+<p align="justify">
+    Saluran amplitude damping memodelkan kehilangan energi:
+</p>
+
+<p align="justify">
+\[
+\rho' =
+\begin{pmatrix}
+1-\gamma & 0 \\
+0 & \gamma
+\end{pmatrix}
+\]
+</p>
+
+<p align="justify">
+    Misalkan keadaan ideal adalah \( |1\rangle \) dengan \( \gamma = 0.20 \).
+</p>
+
+<p align="justify">
+    Dalam kerangka HCE, dilakukan pemisahan komponen:
+</p>
+
+<p align="justify">
+\[
+\rho_{\text{HCE}} = \frac{\rho' - (1-\gamma)|0\rangle\langle0|}{\gamma}
+\]
+</p>
+
+<p align="justify">
+\[
+\rho_{\text{HCE}} = |1\rangle\langle 1|
+\]
+</p>
+
+<p align="justify">
+<b>Penegasan:</b> amplitude damping bukan chaos murni, tetapi tetap bersifat <b>hybrid</b> karena mengandung struktur deterministik yang dapat diekstraksi ulang.
+</p>
+
+<hr>
+</div>
+</div>
+<!-- ========================= -->
+<!--     CONTOH 8: PHASE–CHAOTIC -->
+<!-- ========================= -->
+<div class="interactive-element">
+  <h4><b>4. Contoh Ketiga: Phase–Chaotic Noise</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+
+<p align="justify">
+    Untuk menunjukkan aspek chaotic dalam HCE, pertimbangkan noise fase yang mengikuti dinamika logistik:
+</p>
+
+<p align="justify">
+\[
+\theta_{n+1} = r\,\theta_n(1-\theta_n), \quad r = 3.9
+\]
+</p>
+
+<p align="justify">
+    Fase kuantum dimodifikasi sebagai:
+</p>
+
+<p align="justify">
+\[
+|1\rangle \rightarrow e^{i\theta_n}|1\rangle
+\]
+</p>
+
+<p align="justify">
+    Dalam HCE, chaos tidak diperlakukan sebagai acakan total, melainkan sebagai <b>fraktal deterministik</b> yang dapat ditelusuri kembali melalui pola iteratifnya.
+</p>
+
+<p align="justify">
+<b>Inilah contoh eksplisit bahwa HCE menangani error hybrid dan chaotic secara simultan.</b>
+</p>
+
+<hr>
+</div>
+</div>
+<!-- ========================= -->
+<!--     SECTION 9: PENEGASAN -->
+<!-- ========================= -->
+<div class="interactive-element">
+  <h4><b>5. Penegasan Epistemologis: HCE sebagai Paradigma</b><span class="expand-icon"></span></h4>
+  <div class="toggle-content">
+
+<p align="justify">
+    HCE bukan algoritme, bukan teknik error correction, dan bukan prosedur numerik baku. HCE adalah <b>paradigma konseptual</b> untuk membaca error sebagai struktur bermakna. Contoh-contoh sebelumnya berfungsi sebagai eksposisi cara pandang, bukan sebagai resep komputasional universal.
+</p>
+
+<p align="justify">
+    Dengan demikian, kontribusi utama HCE berada pada tingkat fundamental: <b>menggeser cara kita memahami hubungan antara ketidakpastian, chaos, dan kepastian dalam sistem komputasi kuantum.</b>
+</p>
+<hr>
+</div>
+</div>
+</section>
+
 
     </main>
 
@@ -1147,6 +2286,37 @@ Masa depan kecerdasan manusia bukan ditentukan oleh AI, tetapi oleh <b>orientasi
             window.addEventListener('scroll', highlightNavLink);
             window.addEventListener('load', highlightNavLink);
         });
+		
+// Perbaiki render MathJax khusus untuk sqrt
+function fixSqrtDisplay() {
+  document.querySelectorAll('.mjx-sqrt').forEach(sqrt => {
+    sqrt.style.minWidth = 'fit-content';
+    sqrt.style.overflow = 'visible';
+    const box = sqrt.querySelector('.mjx-box');
+    if (box) {
+      box.style.minWidth = 'fit-content';
+      box.style.overflow = 'visible';
+    }
+  });
+}
+
+// Jalankan setelah MathJax selesai render
+if (window.MathJax) {
+  MathJax.startup.promise.then(() => {
+    setTimeout(fixSqrtDisplay, 500);
+  });
+}
+
+// Juga jalankan saat konten diperluas
+document.querySelectorAll('.interactive-element').forEach(el => {
+  el.addEventListener('click', function() {
+    setTimeout(() => {
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise().then(fixSqrtDisplay);
+      }
+    }, 400);
+  });
+});
 		
     </script>
 </body>
